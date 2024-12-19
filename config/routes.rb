@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
+  get "profiles", to: "profiles#show"
   root "home#index"
 end
