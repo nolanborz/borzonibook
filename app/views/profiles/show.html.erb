@@ -4,6 +4,14 @@
     <h1 class="text-2xl font-bold">Your Profile</h1>
     <p class="text-gray-600"><%= current_user.email %></p>
   </div>
+  <!-- show followers -->
+  <div class="mb-6">
+    <h1 class="text-2xl font-bold"><%= current_user.email %></h1>
+    <div class="text-gray-600 mt-2">
+      <span class="mr-4"><%= pluralize(current_user.followers.count, 'follower') %></span>
+      <span><%= pluralize(current_user.following.count, 'following') %></span>
+    </div>
+  </div>
 
   <h2 class="text-xl font-semibold mb-4">Your Posts</h2>
   

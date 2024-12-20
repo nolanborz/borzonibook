@@ -1,0 +1,16 @@
+<!-- app/views/users/_follow_button.html.erb -->
+<div id="follow_form_<%= user.id %>">
+  <% if current_user != user %>
+    <% if current_user.following?(user) %>
+      <%= form_with(model: current_user.active_relationships.find_by(followed_id: user.id),
+                    method: :delete) do |f| %>
+        <%= f.submit "Following", class: "bg-gray-500 text-white px-4 py-2 rounded hover:bg-red-600 hover:text-white" %>
+      <% end %>
+    <% else %>
+      <%= form_with(model: current_user.active_relationships.build) do |f| %>
+        <%= f.hidden_field :followed_id, value: user.id %>
+        <%= f.submit "Follow", class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
