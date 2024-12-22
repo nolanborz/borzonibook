@@ -7,16 +7,28 @@
     <% end %>
   </div>
 
+  <div class="flex space-x-4 mb-6">
+    <%= link_to "All Posts", 
+                posts_path(filter: 'all'), 
+                class: "px-4 py-2 rounded-md #{params[:filter] != 'following' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}" %>
+    <%= link_to "Following", 
+                posts_path(filter: 'following'), 
+                class: "px-4 py-2 rounded-md #{params[:filter] == 'following' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}" %>
+  </div>
+
   <div class="space-y-6">
     <% @posts.each do |post| %>
       <div class="border rounded-lg p-4 shadow">
         <div class="flex justify-between items-start mb-2">
+          <%= gravatar_for(current_user, size: 120) %>
+
           <div>
             <span class="font-bold"><%= post.user.email %></span>
             <span class="text-gray-500 text-sm ml-2"><%= time_ago_in_words(post.created_at) %> ago</span>
           </div>
         </div>
-
+        <!-- app/views/posts/index.html.erb -->
+        
         <p class="text-gray-800 mb-4"><%= post.content %></p>
 
         <!-- Add like button here -->
@@ -31,6 +43,7 @@
           <h3 class="font-medium mb-2">Comments</h3>
           <% post.comments.each do |comment| %>
             <div class="bg-gray-50 p-2 rounded mb-2">
+              <%= gravatar_for(post.user, size: 40) %>
               <div class="flex justify-between items-center text-sm">
                 <span class="font-medium"><%= comment.user.email %></span>
                 <span class="text-gray-500"><%= time_ago_in_words(comment.created_at) %> ago</span>
