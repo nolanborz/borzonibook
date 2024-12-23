@@ -15,6 +15,9 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
 
+  has_many :dislikes, dependent: :destroy
+  has_many :disliked_posts, through: :likes, source: :post
+
   def follow(other_user)
     following << other_user unless self == other_user || following?(other_user)
   end
