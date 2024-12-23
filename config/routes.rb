@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
     resources :likes, only: [ :create, :destroy ]
+    resources :dislikes, only: [ :create, :destroy ]
   end
   resources :users do
     member do
