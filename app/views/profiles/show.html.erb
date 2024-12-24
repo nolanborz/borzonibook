@@ -9,12 +9,22 @@
   </div>
   <!-- show followers -->
   <div class="mb-6">
+    <h1 class="text-2xl, fond-bold"><%= @user.username %></h1>
     <h1 class="text-2xl font-bold"><%= current_user.email %></h1>
+    <% if @user.bio.present? %>
+      <div class="mt-4 text-gray-700"><%= @user.bio %></div>
+    <% end %>
     <div class="text-gray-600 mt-2">
       <span class="mr-4"><%= pluralize(current_user.followers.count, 'follower') %></span>
       <span><%= pluralize(current_user.following.count, 'following') %></span>
     </div>
-  </div>
+    <!-- edit profile -->
+    <% if current_user.id == @user.id %>
+      <%= link_to "Edit Profile", 
+                  edit_user_path(@user), 
+                  class: "mt-4 inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition" %>
+    <% end %>
+  
 
   <h2 class="text-xl font-semibold mb-4">Your Posts</h2>
   

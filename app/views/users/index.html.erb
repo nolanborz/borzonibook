@@ -8,10 +8,15 @@
         <div class="flex items-center">
           <%= gravatar_for(user, size: 50) %>
           <div class="ml-4">
+            <span class="font-medium"><%= user.username %></span>
             <span class="font-medium"><%= user.email %></span>
+            <% if user.bio.present? %>
+              <div class="text-sm text-gray-600 mt-1"><%= truncate(user.bio, length: 100) %></div>
+            <% end %>
             <div class="text-sm text-gray-500">
               <%= pluralize(user.followers.count, 'follower') %> • 
               Following <%= user.following.count %>
+              
             </div>
           </div>
         </div>
