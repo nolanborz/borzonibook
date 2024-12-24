@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+  after_create :send_welcome_email
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 30 }
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :bio, length: { maximum: 500 }, allow_blank: true
@@ -21,7 +21,7 @@ class User < ApplicationRecord
   has_many :liked_posts, through: :likes, source: :post
 
   has_many :dislikes, dependent: :destroy
-  has_many :disliked_posts, through: :likes, source: :post
+  has_many :disliked_posts, through: :dislikes, source: :post
 
   def follow(other_user)
     following << other_user unless self == other_user || following?(other_user)
@@ -33,5 +33,11 @@ class User < ApplicationRecord
 
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  private
+
+  def send_welcome_email
+    UserMailer.with(user: self).welcome_email.deliver_now
   end
 end
