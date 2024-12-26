@@ -7,7 +7,7 @@ grab-user-prof-pic
 1988:gk-T0j3HkiaiSNFg9lNlaGZGwPN081paZleg4uC9BDxG3grvy4wnyO8D2FHc2x-U
 # Ignore bundler config.
 /.bundle
-
+/config/application.yml
 # Ignore all environment files (except templates).
 /.env*
 !/.env*.erb
