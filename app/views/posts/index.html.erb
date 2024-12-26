@@ -3,17 +3,17 @@
   <div class="flex justify-between items-center mb-6">
     <h1 class="text-2xl font-bold">Posts</h1>
     <% if user_signed_in? %>
-      <%= link_to "New Post", new_post_path, class: "bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600" %>
+      <%= link_to "New Post", new_post_path, class: "bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600" %>
     <% end %>
   </div>
 
   <div class="flex space-x-4 mb-6">
     <%= link_to "All Posts", 
                 posts_path(filter: 'all'), 
-                class: "px-4 py-2 rounded-md #{params[:filter] != 'following' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}" %>
+                class: "px-4 py-2 rounded-md #{params[:filter] != 'following' ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700'}" %>
     <%= link_to "Following", 
                 posts_path(filter: 'following'), 
-                class: "px-4 py-2 rounded-md #{params[:filter] == 'following' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}" %>
+                class: "px-4 py-2 rounded-md #{params[:filter] == 'following' ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700'}" %>
   </div>
 
   <div class="space-y-6">
@@ -59,7 +59,7 @@
             <%= form_with(model: [post, post.comments.build], local: true, class: "mt-4") do |f| %>
               <div class="flex gap-2">
                 <%= f.text_field :content, placeholder: "Add a comment...", class: "flex-1 p-2 border rounded" %>
-                <%= f.submit "Comment", class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" %>
+                <%= f.submit "Comment", class: "bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600" %>
               </div>
             <% end %>
           <% end %>

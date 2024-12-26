@@ -19,18 +19,23 @@
   </head>
 
   <body>
-    <nav class="bg-blue-600 p-4 text-white">
+    <nav class="bg-green-700 p-4 text-white">
       <div class="container mx-auto flex justify-between items-center">
         <%= link_to "Borzonibook", root_path, class: "text-xl font-bold" %>
+        <svg class="w-6 h-4 mr-2" viewBox="0 0 50 30" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" width="16.67" height="30" fill="#008C45"/>
+          <rect x="16.67" width="16.67" height="30" fill="#FFFFFF"/>
+          <rect x="33.34" width="16.67" height="30" fill="#CD212A"/>
+        </svg>
         <div class="space-x-4">
           <% if user_signed_in? %>
-            <%= link_to "Find Users", users_path, class: "hover:text-blue-200" %>
-            <%= link_to "New Post", new_post_path, class: "hover:text-blue-200" %>
-            <%= link_to "Profile", profiles_path, class: "hover:text-blue-200" %>  <!-- Add this line -->
-            <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "hover:text-blue-200" %>
+            <%= link_to "Find Users", users_path, class: "hover:text-green-200" %>
+            <%= link_to "New Post", new_post_path, class: "hover:text-green-200" %>
+            <%= link_to "Profile", profiles_path, class: "hover:text-green-200" %>  <!-- Add this line -->
+            <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "hover:text-green-200" %>
           <% else %>
-            <%= link_to "Sign In", new_user_session_path, class: "hover:text-blue-200" %>
-            <%= link_to "Sign Up", new_user_registration_path, class: "hover:text-blue-200" %>
+            <%= link_to "Sign In", new_user_session_path, class: "hover:text-green-200" %>
+            <%= link_to "Sign Up", new_user_registration_path, class: "hover:text-green-200" %>
           <% end %>
         </div>
       </div>
