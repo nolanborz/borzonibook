@@ -13,7 +13,10 @@ Rails.application.configure do
     authentication: :plain,
     enable_starttls_auto: true
   }
-
+  config.force_ssl = true
+  config.middleware.use Rack::HostRedirect,
+  "borzonibook.com" => "www.borzonibook.com",
+  "http://borzonibook.com" => "https://borzonibook.com"
   config.action_mailer.default_url_options = { host: "borzonibook.com" }
   # Code is not reloaded between requests.
   config.enable_reloading = false
