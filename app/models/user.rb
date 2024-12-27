@@ -9,6 +9,8 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 30 }
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :bio, length: { maximum: 500 }, allow_blank: true
+  validates :invitation_code, presence: true
+  validate :valid_invitation_code
 
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
@@ -24,13 +26,6 @@ class User < ApplicationRecord
 
   has_many :dislikes, dependent: :destroy
   has_many :disliked_posts, through: :dislikes, source: :post
-
-  def valid_invitation_code
-    valid_codes = ENV["INVITATION_CODES"]&.split(",") || []
-    unless valid_codes.include?(invitation_code)
-      errors.add(:invitation_code, "is not valid")
-    end
-  end
 
   def self.from_omniauth(auth)
     # Convert string keys to symbols if auth is a Hash
@@ -56,6 +51,11 @@ class User < ApplicationRecord
   end
 
   private
+  def valid_invitation_code
+    unless invitation_code == ENV["SITE_INVITATION_CODE"]
+      errors.add(:invitation_code, "is not valid")
+    end
+  end
 
   def send_welcome_email
     UserMailer.with(user: self).welcome_email.deliver_now
