@@ -14,9 +14,10 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
   config.force_ssl = true
-  #config.middleware.use Rack::HostRedirect,
-  "borzonibook.com" => "www.borzonibook.com",
-  "http://borzonibook.com" => "https://borzonibook.com"
+  config.middleware.use Rack::Rewrite do
+    r301 "borzonibook.com", "www.borzonibook.com"
+    r301 "http://borzonibook.com", "https://borzonibook.com"
+  end
   config.action_mailer.default_url_options = { host: "borzonibook.com" }
   # Code is not reloaded between requests.
   config.enable_reloading = false
