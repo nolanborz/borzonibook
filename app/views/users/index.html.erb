@@ -9,8 +9,8 @@
           <%= gravatar_for(user, size: 50) %>
           <div class="ml-4">
             <%= link_to user.username, profile_path(user) %>
-            <!--<span class="font-medium"><%= user.username %></span>-->
-            <span class="font-medium"><%= user.email %></span>
+            <!--<span class="font-medium"><%= user.username %></span>--->
+            <!---<span class="font-medium"><%= user.email %></span> --->
             <% if user.bio.present? %>
               <div class="text-sm text-gray-600 mt-1"><%= truncate(user.bio, length: 100) %></div>
             <% end %>

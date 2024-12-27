@@ -32,12 +32,14 @@
             <%= link_to "Find Users", users_path, class: "hover:text-green-200" %>
             <%= link_to "New Post", new_post_path, class: "hover:text-green-200" %>
             <%= link_to "Profile", profile_path(current_user), class: "hover:text-green-200" %>
-            <%= button_to "Sign Out TEST", 
-              destroy_user_session_path, 
-              method: :delete, 
-              class: "bg-transparent border-none hover:text-green-200 p-0 font-inherit cursor-pointer inline-block",
-              data: { turbo: false, 
-              confirm: "Are you sure you want to sign out?" } %>
+            <div class="inline-block">
+              <%= button_to "Sign Out",
+                destroy_user_session_path,
+                method: :delete,
+                class: "bg-transparent border-none hover:text-green-200 p-0 font-inherit cursor-pointer inline-block",
+                data: { turbo: false,
+                confirm: "Are you sure you want to sign out?" } %>
+            </div>
           <% else %>
             <%= link_to "Sign In", new_user_session_path, class: "hover:text-green-200" %>
             <%= link_to "Sign Up", new_user_registration_path, class: "hover:text-green-200" %>

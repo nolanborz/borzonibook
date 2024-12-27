@@ -24,7 +24,7 @@
 
           <div>
             <span class="font-bold"><%= post.user.username %></span>
-            <span class="font-bold"><%= post.user.email %></span>
+            <!--<span class="font-bold"><%= post.user.email %></span>-->
             <span class="text-gray-500 text-sm ml-2"><%= time_ago_in_words(post.created_at) %> ago</span>
           </div>
         </div>
@@ -48,7 +48,7 @@
               <%= gravatar_for(post.user, size: 40) %>
               <div class="flex justify-between items-center text-sm">
                 <span class="font-medium"><%= comment.user.username %></span>
-                <span class="font-medium"><%= comment.user.email %></span>
+                <!-- <span class="font-medium"><%= comment.user.email %></span> -->
                 <span class="text-gray-500"><%= time_ago_in_words(comment.created_at) %> ago</span>
               </div>
               <p class="mt-1"><%= comment.content %></p>
