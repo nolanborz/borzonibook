@@ -1,0 +1,27 @@
+# app/views/users/oauth_invitations/new.html.erb
+<div class="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow">
+  <h2 class="text-2xl font-bold mb-6">One Last Step</h2>
+  <p class="text-gray-600 mb-6">To complete your Google sign up, please enter an invitation code.</p>
+
+  <%= form_tag users_oauth_invitation_path, method: :post do %>
+    <% if flash[:alert].present? %>
+      <div class="mb-4 p-3 bg-red-100 text-red-700 rounded-md">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
+    <div class="mb-6">
+      <%= label_tag :invitation_code, "Invitation Code", class: "block text-sm font-medium text-gray-700 mb-1" %>
+      <%= text_field_tag :invitation_code, nil, 
+          class: "w-full p-2 border rounded-md focus:ring-green-500 focus:border-green-500",
+          placeholder: "Enter your invitation code" %>
+    </div>
+
+    <div class="flex justify-between items-center">
+      <%= submit_tag "Complete Sign Up", 
+          class: "px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors" %>
+      <%= link_to "Cancel", root_path, 
+          class: "text-gray-500 hover:text-gray-700" %>
+    </div>
+  <% end %>
+</div>

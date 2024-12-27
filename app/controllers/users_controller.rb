@@ -7,6 +7,16 @@ class UsersController < ApplicationController
                  .includes(:followers, :following)
   end
 
+  def create
+    @user = User.new(user_params)
+
+    if @user.save
+      bypass_sign_in(@user)
+      redirect_to @user, notice: "Account created successfully!"
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
   def edit
   end
 
@@ -51,7 +61,8 @@ class UsersController < ApplicationController
       :bio,
       :current_password,
       :password,
-      :password_confirmation
+      :password_confirmation,
+      :invitation_code
     )
   end
 end

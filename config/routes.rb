@@ -2,8 +2,13 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: "users/registrations",
     sessions: "users/sessions",
-    omniauth_callbacks: "users/omniauth_callbacks"  # Make sure this line is present
+    omniauth_callbacks: "users/omniauth_callbacks"
   }
+
+  namespace :users do
+    get "oauth_invitation/new", to: "oauth_invitations#new", as: :new_oauth_invitation
+    post "oauth_invitation", to: "oauth_invitations#create", as: :oauth_invitation
+  end
   resources :posts do
     resources :comments
     resources :likes, only: [ :create, :destroy ]

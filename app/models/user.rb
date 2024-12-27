@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include InvitationCodeValidator
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -24,12 +25,21 @@ class User < ApplicationRecord
   has_many :dislikes, dependent: :destroy
   has_many :disliked_posts, through: :dislikes, source: :post
 
+  def valid_invitation_code
+    valid_codes = Rails.application.credentials.invitation_codes || []
+    unless valid_codes.include?(invitation_code)
+      errors.add(:invitation_code, "is not valid")
+    end
+  end
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
+    # Convert string keys to symbols if auth is a Hash
+    auth = auth.with_indifferent_access if auth.is_a?(Hash)
+
+    where(provider: auth[:provider], uid: auth[:uid]).first_or_create do |user|
+      user.email = auth.dig(:info, :email)
       user.password = Devise.friendly_token[0, 20]
-      user.username = auth.info.name   # since you're using username instead of full_name
+      user.username = auth.dig(:info, :name)
     end
   end
 
