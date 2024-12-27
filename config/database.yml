@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: borzonibook_production
-  username: borzonibook
-  password: <%= ENV["BORZONIBOOK_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
