@@ -26,7 +26,7 @@ class User < ApplicationRecord
   has_many :disliked_posts, through: :dislikes, source: :post
 
   def valid_invitation_code
-    valid_codes = Rails.application.credentials.invitation_codes || []
+    valid_codes = ENV["INVITATION_CODES"]&.split(",") || []
     unless valid_codes.include?(invitation_code)
       errors.add(:invitation_code, "is not valid")
     end
