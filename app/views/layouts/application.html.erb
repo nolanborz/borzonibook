@@ -31,7 +31,7 @@
           <% if user_signed_in? %>
             <%= link_to "Find Users", users_path, class: "hover:text-green-200" %>
             <%= link_to "New Post", new_post_path, class: "hover:text-green-200" %>
-            <%= link_to "Profile", profiles_path, class: "hover:text-green-200" %>
+            <%= link_to "Profile", profile_path(current_user), class: "hover:text-green-200" %>
             <%= button_to "Sign Out TEST", 
               destroy_user_session_path, 
               method: :delete, 

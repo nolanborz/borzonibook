@@ -1,4 +1,4 @@
-<!-- app/views/users/index.html.erb -->
+<!-- app/views/users/index.html.erb THIS PAGE SHOWS ALL THE USERS -->
 <div class="max-w-2xl mx-auto">
   <h1 class="text-2xl font-bold mb-6">Users</h1>
 
@@ -8,7 +8,8 @@
         <div class="flex items-center">
           <%= gravatar_for(user, size: 50) %>
           <div class="ml-4">
-            <span class="font-medium"><%= user.username %></span>
+            <%= link_to user.username, profile_path(user) %>
+            <!--<span class="font-medium"><%= user.username %></span>-->
             <span class="font-medium"><%= user.email %></span>
             <% if user.bio.present? %>
               <div class="text-sm text-gray-600 mt-1"><%= truncate(user.bio, length: 100) %></div>
