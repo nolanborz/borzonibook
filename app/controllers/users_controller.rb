@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     else
       # If not changing password, use regular update with filtered params
       if @user.update(user_params_without_password)
-        redirect_to profiles_path, notice: "Profile updated successfully!"
+        redirect_to profile_path, notice: "Profile updated successfully!"
       else
         render :edit, status: :unprocessable_entity
       end
