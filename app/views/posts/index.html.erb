@@ -20,7 +20,7 @@
     <% @posts.each do |post| %>
       <div class="border rounded-lg p-4 shadow">
         <div class="flex justify-between items-start mb-2">
-          <%= gravatar_for(current_user, size: 120) %>
+          <%= gravatar_for(post.user, size: 120) %>
 
           <div>
             <span class="font-bold"><%= post.user.username %></span>
@@ -45,7 +45,7 @@
           <h3 class="font-medium mb-2">Comments</h3>
           <% post.comments.each do |comment| %>
             <div class="bg-gray-50 p-2 rounded mb-2">
-              <%= gravatar_for(post.user, size: 40) %>
+              <%= gravatar_for(comment.user, size: 40) %>
               <div class="flex justify-between items-center text-sm">
                 <span class="font-medium"><%= comment.user.username %></span>
                 <!-- <span class="font-medium"><%= comment.user.email %></span> -->

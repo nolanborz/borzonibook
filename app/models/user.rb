@@ -35,6 +35,7 @@ class User < ApplicationRecord
       user.email = auth.dig(:info, :email)
       user.password = Devise.friendly_token[0, 20]
       user.username = auth.dig(:info, :name)
+      user.invitation_code = ENV["SITE_INVITATION_CODE"]
     end
   end
 
