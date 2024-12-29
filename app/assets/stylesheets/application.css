@@ -13,3 +13,28 @@
  *= require_tree .
  *= require_self
  */
+ .google-btn {
+  height: 40px;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #4285f4;
+  display: flex;
+  align-items: center;
+  padding: 1px;
+  border-radius: 4px;
+}
+
+.google-btn img {
+  width: 38px;
+  height: 38px;
+  padding: 8px;
+}
+
+.google-btn span {
+  flex: 1;
+  color: #757575;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}

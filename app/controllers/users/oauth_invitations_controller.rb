@@ -1,4 +1,3 @@
-# app/controllers/users/oauth_invitations_controller.rb
 class Users::OauthInvitationsController < ApplicationController
   def new
     redirect_to root_path, alert: "Please sign in with Google first." if session["devise.google_data"].blank?
