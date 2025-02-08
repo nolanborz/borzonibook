@@ -1,24 +1,29 @@
-# README
+Borzonibook is a full stack Ruby on Rails social media application.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Features**
+- Account creation through Devise
+- Google Oauth2 integration
+- Write posts to share with other users
+- Like, dislike, and comment on posts
+- Follow other users and filter your feed to see only posts from those you follow
+- Edit your account and username
 
-Things you may want to cover:
+**Roadmap**
+- Add ability to upload your own profile picture/avatar, as opposed to a randomly generated Gravatar one.
+- Post pictures
+- Add activity limits to prevent spam
+- Remove the 'account creation key' to improve accessibility
+- Customize feed according to the users
 
-* Ruby version
+**Demo Screenshots**
+View posts from other users on the site, or those you just follow
+![Feed](screenshots/feed.png)
 
-* System dependencies
+Ability to login with Google, using OAuth2.0
+![Oauth](screenshots/oauth.png)
 
-* Configuration
+Customize your profile, username, and bio
+![Profile](screenshots/profile.png)
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Follow, or unfollow, other users on the site
+![Users](screenshots/users.png)
