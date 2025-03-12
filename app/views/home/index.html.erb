@@ -2,12 +2,12 @@
   <h1 class="text-4xl font-bold mb-4">Welcome to Borzonibook</h1>
   <p class="text-xl text-gray-600 mb-8">Connect and share your stories with the worldwide Borzoni Famiglia 🇮🇹</p>
   
-  <div class="space-y-4">
-    <%= link_to "Sign Up", new_user_registration_path, class: "block bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-500" %>
-    <%= link_to "Sign In", new_user_session_path, class: "block bg-gray-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-600" %>
+  <div class="flex flex-col items-center space-y-4">
+    <%= link_to "Sign Up", new_user_registration_path, class: "w-48 bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-500 text-center" %>
+    <%= link_to "Sign In", new_user_session_path, class: "w-48 bg-gray-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-600 text-center" %>
     <%= button_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, 
         data: { turbo: false }, 
         method: :post, 
-        class: "block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-500" %>
+        class: "w-48 bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-500 text-center" %>
   </div>
 </div>
